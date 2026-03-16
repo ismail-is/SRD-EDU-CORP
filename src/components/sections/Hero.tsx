@@ -66,15 +66,16 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
             className="relative"
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/50 aspect-[4/3] bg-white">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/50 aspect-[4/3] bg-primary/5">
               {/* Fallback pattern if image is missing, you can replace the src when ready */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-accent/10 z-10 mix-blend-overlay" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 z-10 mix-blend-multiply" />
               <Image 
-                src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
-                alt="Professional Students" 
+                src="/hero-students.png" 
+                alt="University students collaborating and networking" 
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover mix-blend-overlay opacity-90"
+                className="object-cover opacity-90"
+                priority
               />
             </div>
             
