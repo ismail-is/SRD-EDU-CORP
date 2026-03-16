@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Section, SectionTitle } from "../ui/Section";
 import { HiArrowRight } from "react-icons/hi";
+import Image from "next/image";
 
 export function Programs() {
   const programs = [
@@ -20,7 +21,7 @@ export function Programs() {
     },
     {
       title: "Entrepreneurship Development",
-      image: "https://images.unsplash.com/photo-1556761175-5973dc0f32b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     },
     {
       title: "Institutional Consulting",
@@ -31,7 +32,7 @@ export function Programs() {
       image: "https://images.unsplash.com/photo-1531497865144-0464ef8fb9a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     },
     {
-      title: "Networking Events",
+      title: "Professional Networking Events",
       image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     }
   ];
@@ -53,12 +54,13 @@ export function Programs() {
             transition={{ duration: 0.5, delay: index * 0.1 }}
             className={`group relative overflow-hidden rounded-srd cursor-pointer shadow-sm hover:shadow-xl ${index === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}
           >
-            <div className={`aspect-square w-full ${index === 0 ? 'md:aspect-auto md:h-full min-h-[400px]' : ''}`}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img 
+            <div className={`aspect-square w-full relative ${index === 0 ? 'md:aspect-auto md:h-full min-h-[400px]' : ''}`}>
+              <Image 
                 src={program.image} 
-                alt={program.title} 
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                alt={program.title}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
               />
             </div>
             <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent transition-opacity duration-300" />
