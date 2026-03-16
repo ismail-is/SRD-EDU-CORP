@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Section } from "../ui/Section";
 import { HiCheckCircle } from "react-icons/hi";
+import Image from "next/image";
 
 export function About() {
   const highlights = [
@@ -25,20 +26,22 @@ export function About() {
           className="relative"
         >
           <div className="relative z-10 rounded-2xl overflow-hidden shadow-xl aspect-square max-w-md mx-auto">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img 
+            <Image 
               src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
               alt="About SRD Edu Corp" 
-              className="w-full h-full object-cover"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
             />
           </div>
           
           <div className="absolute -bottom-10 -right-10 w-2/3 aspect-square rounded-2xl overflow-hidden shadow-2xl border-4 border-white z-20 hidden md:block">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img 
+            <Image 
               src="https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
               alt="Team Meeting" 
-              className="w-full h-full object-cover" 
+              fill
+              sizes="33vw"
+              className="object-cover" 
             />
           </div>
           

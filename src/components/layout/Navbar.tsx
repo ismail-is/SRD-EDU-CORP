@@ -39,7 +39,7 @@ export function Navbar() {
       <div className="container mx-auto px-4 md:px-6 lg:max-w-7xl flex items-center justify-between">
         <Link href="#home" className="flex items-center gap-2">
           {/* Logo container */}
-          <div className="relative h-20 w-48 md:w-64 flex items-center">
+          <div className="relative h-16 w-40 md:h-20 md:w-64 flex items-center">
             <Image 
               src="/logo.png" 
               alt="SRD EDU CORP Logo" 
@@ -51,7 +51,7 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.name}
@@ -71,8 +71,9 @@ export function Navbar() {
 
         {/* Mobile Menu Toggle */}
         <button
-          className="md:hidden text-gray-700 focus:outline-none z-50 relative"
+          className="lg:hidden text-gray-700 focus:outline-none z-50 relative p-2"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle mobile menu"
         >
           {mobileMenuOpen ? <HiX size={28} /> : <HiMenu size={28} />}
         </button>
@@ -82,21 +83,30 @@ export function Navbar() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.nav
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 w-full bg-white shadow-lg md:hidden flex flex-col items-center py-6 space-y-4"
+            exit={{ opacity: 0, y: -10 }}
+            className="absolute top-full left-0 w-full bg-white shadow-2xl lg:hidden flex flex-col pt-4 pb-8 px-6 border-t border-gray-100 max-h-[80vh] overflow-y-auto"
           >
-            {navLinks.map((link) => (
+            <div className="flex flex-col space-y-4 pt-4">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="text-gray-800 font-medium text-lg hover:text-primary hover:bg-gray-50 transition-colors w-full rounded-lg py-3 px-4"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link.name}
+                </Link>
+              ))}
               <Link
-                key={link.name}
-                href={link.href}
-                className="text-gray-800 font-medium text-lg hover:text-primary transition-colors w-full text-center py-2"
+                href="#contact"
+                className="bg-primary text-white w-full py-4 mt-4 rounded-xl text-center font-medium hover:bg-primary-light transition-colors shadow-md"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                {link.name}
+                Get In Touch
               </Link>
-            ))}
+            </div>
           </motion.nav>
         )}
       </AnimatePresence>

@@ -29,8 +29,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} ${poppins.variable} font-sans antialiased bg-transparent text-foreground`}>
+    <html lang="en" className="scroll-smooth overflow-x-hidden max-w-[100vw]">
+      <body className={`${inter.variable} ${poppins.variable} font-sans antialiased bg-transparent text-foreground overflow-x-hidden max-w-[100vw]`}>
         <AnimatedBackground />
         {children}
         <FloatingActions />

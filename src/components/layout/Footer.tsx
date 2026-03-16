@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FaLinkedin, FaInstagram, FaFacebookF } from "react-icons/fa";
+import Image from "next/image";
 
 export function Footer() {
   return (
@@ -7,8 +8,14 @@ export function Footer() {
       <div className="container mx-auto px-4 md:px-6 lg:max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           <div>
-            <div className="text-2xl font-heading font-bold text-white mb-4">
-              <span className="text-accent">SRD</span> EDU CORP
+            <div className="relative h-20 w-48 mb-6">
+              <Image 
+                src="/foooterlogo.png" 
+                alt="SRD EDU CORP Footer Logo" 
+                fill
+                // sizes="36vw"
+                className="object-contain object-left "
+              />
             </div>
             <p className="text-gray-300 text-sm max-w-xs leading-relaxed">
               Empowering Talent. Building Futures. Connecting Opportunities.

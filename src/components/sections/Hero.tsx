@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { HiArrowRight } from "react-icons/hi";
+import Image from "next/image";
 
 export function Hero() {
   return (
@@ -67,12 +68,13 @@ export function Hero() {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/50 aspect-[4/3] bg-white">
               {/* Fallback pattern if image is missing, you can replace the src when ready */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-accent/10" />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img 
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-accent/10 z-10 mix-blend-overlay" />
+              <Image 
+                src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
                 alt="Professional Students" 
-                className="w-full h-full object-cover mix-blend-overlay opacity-90"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover mix-blend-overlay opacity-90"
               />
             </div>
             
