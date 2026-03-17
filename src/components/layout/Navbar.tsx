@@ -32,7 +32,7 @@ export function Navbar() {
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/95 backdrop-blur-md shadow-md py-3"
+          ? "bg-white/95 backdrop-blur-md shadow-md py-1"
           : "bg-transparent py-4 lg:py-6"
       }`}
     >
@@ -40,18 +40,19 @@ export function Navbar() {
         <Link href="#home" className="flex items-center gap-2 group">
           {/* Logo container: optimized for all screens */}
           <div 
-            className={`relative flex-shrink-0 transition-all duration-300 ${
+            className={`relative flex-shrink-0 transition-all duration-300 max-w-[70vw] ${
               isScrolled
-                ? "h-12 w-[160px] sm:h-14 sm:w-[190px] md:h-16 md:w-[220px]" 
-                : "h-14 w-[180px] sm:h-16 sm:w-[210px] md:h-20 md:w-[280px] lg:h-24 lg:w-[320px]"
+                ? "h-20 w-[240px] sm:h-20 sm:w-[280px] md:h-20 md:w-[280px] lg:h-24 lg:w-[320px]" 
+                : "h-24 w-[280px] sm:h-28 sm:w-[340px] md:h-28 md:w-[360px] lg:h-36 lg:w-[460px]"
             }`}
           >
             <Image 
               src="/SRD_logo.png" 
               alt="SRD EDU CORP Logo" 
               fill
+              quality={100}
               className="object-contain object-left group-hover:scale-105 transition-transform duration-300"
-              sizes="(max-width: 640px) 180px, (max-width: 768px) 210px, (max-width: 1024px) 280px, 320px"
+              sizes="(max-width: 640px) 280px, (max-width: 768px) 340px, (max-width: 1024px) 360px, 460px"
               priority
             />
           </div>
