@@ -7,12 +7,44 @@ import { HiOutlineLocationMarker, HiOutlinePhone, HiOutlineMail } from "react-ic
 
 export function Contact() {
   const [formState, setFormState] = useState({ name: '', email: '', phone: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Normally handle form submission here
-    alert("Thank you for your message! We will get back to you soon.");
-    setFormState({ name: '', email: '', phone: '', message: '' });
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      // Create form data payload matching Google Apps Script structure
+      const formData = new FormData();
+      formData.append('name', formState.name);
+      formData.append('email', formState.email);
+      formData.append('phone', formState.phone);
+      formData.append('message', formState.message);
+
+      // Replace this URL with your actual Google Apps Script Web App URL!
+      const GOOGLE_SCRIPT_URL ='https://script.google.com/macros/s/AKfycbxS9A76KxdtOCLoEycHcycsCdvCZTKiegQ3M1LmKZSd22787j9b9eSQ5RtxGF87WBIH/exec'
+
+      const response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        body: formData,
+        mode: 'no-cors' // Google Scripts requires no-cors for simple form posts without preflight headers
+      });
+
+      // Since mode is no-cors, we won't get a transparent response status, but if promise resolves it mostly succeeded
+      setSubmitStatus('success');
+      setFormState({ name: '', email: '', phone: '', message: '' });
+      
+      // Auto-hide success message after 5 seconds
+      setTimeout(() => setSubmitStatus('idle'), 5000);
+
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -133,13 +165,38 @@ export function Contact() {
                 ></textarea>
               </div>
 
+              {submitStatus === 'success' && (
+                <motion.div 
+                  initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
+                  className="p-4 bg-green-50 text-green-700 border border-green-200 rounded-srd text-sm font-medium"
+                >
+                  Thank you for your message! We will get back to you soon.
+                </motion.div>
+              )}
+
+              {submitStatus === 'error' && (
+                <motion.div 
+                  initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
+                  className="p-4 bg-red-50 text-red-700 border border-red-200 rounded-srd text-sm font-medium"
+                >
+                  Oops! Something went wrong. Please try again or email us directly.
+                </motion.div>
+              )}
+
               <motion.button 
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                whileHover={!isSubmitting ? { scale: 1.02 } : {}}
+                whileTap={!isSubmitting ? { scale: 0.98 } : {}}
                 type="submit"
-                className="w-full bg-accent hover:bg-opacity-90 text-white font-bold py-4 rounded-srd shadow-lg transition-colors flex items-center justify-center gap-2"
+                disabled={isSubmitting}
+                className={`w-full font-bold py-4 rounded-srd shadow-lg transition-all flex items-center justify-center gap-2 ${
+                  isSubmitting ? 'bg-gray-400 cursor-not-allowed text-stone-100' : 'bg-accent hover:bg-opacity-90 text-white'
+                }`}
               >
-                Submit Message
+                {isSubmitting ? (
+                  <div className="w-6 h-6 border-2 border-white/50 border-t-white rounded-full animate-spin" />
+                ) : (
+                  "Submit Message"
+                )}
               </motion.button>
             </div>
           </form>

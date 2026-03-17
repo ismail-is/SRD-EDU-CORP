@@ -39,7 +39,7 @@ export function Navbar() {
       <div className="container mx-auto px-4 md:px-6 lg:max-w-7xl flex items-center justify-between">
         <Link href="#home" className="flex items-center gap-2">
           {/* Logo container */}
-          <div className="relative h-16 w-40 md:h-20 md:w-64 flex items-center">
+          <div className="relative h-20 w-56 md:h-24 md:w-80 flex items-center">
             <Image 
               src="/logo.png" 
               alt="SRD EDU CORP Logo" 

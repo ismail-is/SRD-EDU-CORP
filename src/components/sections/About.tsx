@@ -27,7 +27,7 @@ export function About() {
         >
           <div className="relative z-10 rounded-2xl overflow-hidden shadow-xl aspect-square max-w-md mx-auto">
             <Image 
-              src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+              src="/about-1.jpg" 
               alt="About SRD Edu Corp" 
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
@@ -37,7 +37,7 @@ export function About() {
           
           <div className="absolute -bottom-10 -right-10 w-2/3 aspect-square rounded-2xl overflow-hidden shadow-2xl border-4 border-white z-20 hidden md:block">
             <Image 
-              src="https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+              src="/about-2.jpg" 
               alt="Team Meeting" 
               fill
               sizes="33vw"

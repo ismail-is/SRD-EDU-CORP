@@ -8,32 +8,39 @@ import Image from "next/image";
 export function Programs() {
   const programs = [
     {
-      title: "Career Guidance Workshops",
-      image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      title: "Technical Workshops",
+      description: "Hands-on sessions covering the latest technologies, frameworks, and industry-standard tools.",
+      image: "/program-1.jpg",
     },
     {
-      title: "Research Initiatives",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      title: "Career Fairs",
+      description: "Connect directly with top employers through our organized career and placement fairs.",
+      image: "/program-3.jpg",
     },
     {
       title: "Skill Development Programs",
-      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      description: "Enhance soft skills, leadership, and communication through interactive workshops and mentorship.",
+      image: "/program-2.jpg",
     },
     {
       title: "Entrepreneurship Development",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      description: "Incubate ideas with expert guidance, funding avenues, and structured startup programs.",
+      image: "/about-1.jpg",
+    },
+    {
+      title: "Research Initiatives",
+      description: "Collaborate on cutting-edge research projects with academic and corporate partners.",
+      image: "/program-6.jpg",
     },
     {
       title: "Institutional Consulting",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      description: "Strategic advisory services for educational institutions to optimize operations and academic excellence.",
+      image: "/program-5.jpg",
     },
     {
-      title: "Industry-Academia",
-      image: "https://images.unsplash.com/photo-1531497865144-0464ef8fb9a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    },
-    {
-      title: "Professional Networking Events",
-      image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      title: "Industry Visits",
+      description: "Gain practical exposure through organized visits to leading corporate and manufacturing facilities.",
+      image: "/program-7.jpg",
     }
   ];
 

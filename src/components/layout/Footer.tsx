@@ -13,8 +13,7 @@ export function Footer() {
                 src="/foooterlogo.png" 
                 alt="SRD EDU CORP Footer Logo" 
                 fill
-                // sizes="36vw"
-                className="object-contain object-left "
+                className="object-contain object-left"
               />
             </div>
             <p className="text-gray-300 text-sm max-w-xs leading-relaxed">
