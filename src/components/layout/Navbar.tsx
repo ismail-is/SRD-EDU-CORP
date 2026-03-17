@@ -32,19 +32,26 @@ export function Navbar() {
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/80 backdrop-blur-md shadow-sm py-3"
+          ? "bg-white/80 backdrop-blur-md shadow-sm py-1"
           : "bg-transparent py-5"
       }`}
     >
       <div className="container mx-auto px-4 md:px-6 lg:max-w-7xl flex items-center justify-between">
         <Link href="#home" className="flex items-center gap-2">
           {/* Logo container */}
-          <div className="relative h-20 w-56 md:h-24 md:w-80 flex items-center">
+          <div 
+            className={`relative shrink-0 transition-all duration-300 ${
+              isScrolled
+                ? "h-14 w-[180px] sm:h-16 sm:w-[220px] md:h-20 md:w-[280px] lg:h-24 lg:w-[320px]"
+                : "h-20 w-[220px] sm:h-24 sm:w-[280px] md:h-28 md:w-[340px] lg:h-36 lg:w-[420px]"
+            }`}
+          >
             <Image 
-              src="/logo.png" 
+              src="/SRD_logo.png" 
               alt="SRD EDU CORP Logo" 
               fill
               className="object-contain object-left"
+              sizes="(max-width: 640px) 220px, (max-width: 768px) 280px, (max-width: 1024px) 340px, 420px"
               priority
             />
           </div>
