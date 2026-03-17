@@ -22,7 +22,7 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 10);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -32,45 +32,45 @@ export function Navbar() {
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/80 backdrop-blur-md shadow-sm py-1"
-          : "bg-transparent py-5"
+          ? "bg-white/95 backdrop-blur-md shadow-md py-3"
+          : "bg-transparent py-4 lg:py-6"
       }`}
     >
       <div className="container mx-auto px-4 md:px-6 lg:max-w-7xl flex items-center justify-between">
-        <Link href="#home" className="flex items-center gap-2">
-          {/* Logo container */}
+        <Link href="#home" className="flex items-center gap-2 group">
+          {/* Logo container: optimized for all screens */}
           <div 
-            className={`relative shrink-0 transition-all duration-300 ${
+            className={`relative flex-shrink-0 transition-all duration-300 ${
               isScrolled
-                ? "h-14 w-[180px] sm:h-16 sm:w-[220px] md:h-20 md:w-[280px] lg:h-24 lg:w-[320px]"
-                : "h-20 w-[220px] sm:h-24 sm:w-[280px] md:h-28 md:w-[340px] lg:h-36 lg:w-[420px]"
+                ? "h-12 w-[160px] sm:h-14 sm:w-[190px] md:h-16 md:w-[220px]" 
+                : "h-14 w-[180px] sm:h-16 sm:w-[210px] md:h-20 md:w-[280px] lg:h-24 lg:w-[320px]"
             }`}
           >
             <Image 
               src="/SRD_logo.png" 
               alt="SRD EDU CORP Logo" 
               fill
-              className="object-contain object-left"
-              sizes="(max-width: 640px) 220px, (max-width: 768px) 280px, (max-width: 1024px) 340px, 420px"
+              className="object-contain object-left group-hover:scale-105 transition-transform duration-300"
+              sizes="(max-width: 640px) 180px, (max-width: 768px) 210px, (max-width: 1024px) 280px, 320px"
               priority
             />
           </div>
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
-              className="text-sm font-medium text-gray-700 hover:text-primary transition-colors"
+              className="text-[15px] font-semibold text-gray-800 hover:text-primary relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-primary hover:after:w-full after:transition-all after:duration-300"
             >
               {link.name}
             </Link>
           ))}
           <Link
             href="#contact"
-            className="bg-primary text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-primary-light transition-colors"
+            className="ml-2 bg-primary text-white hover:text-white px-6 py-2.5 rounded-full text-[15px] font-semibold hover:bg-primary/90 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
           >
             Get In Touch
           </Link>
@@ -78,11 +78,11 @@ export function Navbar() {
 
         {/* Mobile Menu Toggle */}
         <button
-          className="lg:hidden text-gray-700 focus:outline-none z-50 relative p-2"
+          className="lg:hidden text-gray-800 focus:outline-none z-50 relative p-2 md:p-3 hover:bg-gray-100 rounded-full transition-colors"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle mobile menu"
         >
-          {mobileMenuOpen ? <HiX size={28} /> : <HiMenu size={28} />}
+          {mobileMenuOpen ? <HiX size={26} className="text-gray-900"/> : <HiMenu size={26} className="text-gray-900"/>}
         </button>
       </div>
 
@@ -90,29 +90,31 @@ export function Navbar() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.nav
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="absolute top-full left-0 w-full bg-white shadow-2xl lg:hidden flex flex-col pt-4 pb-8 px-6 border-t border-gray-100 max-h-[80vh] overflow-y-auto"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="absolute top-full left-0 w-full bg-white shadow-xl lg:hidden border-t border-gray-100 overflow-hidden"
           >
-            <div className="flex flex-col space-y-4 pt-4">
+            <div className="flex flex-col px-6 py-6 pb-8 space-y-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="text-gray-800 font-medium text-lg hover:text-primary hover:bg-gray-50 transition-colors w-full rounded-lg py-3 px-4"
+                  className="text-gray-800 font-medium text-lg hover:text-primary hover:bg-primary/5 transition-colors w-full rounded-xl py-3 px-4 border-b border-gray-50 last:border-0"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.name}
                 </Link>
               ))}
-              <Link
-                href="#contact"
-                className="bg-primary text-white w-full py-4 mt-4 rounded-xl text-center font-medium hover:bg-primary-light transition-colors shadow-md"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Get In Touch
-              </Link>
+              <div className="pt-4">
+                <Link
+                  href="#contact"
+                  className="bg-primary text-white w-full py-4 rounded-xl flex items-center justify-center font-semibold hover:bg-primary/90 transition-colors shadow-md text-lg"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Get In Touch
+                </Link>
+              </div>
             </div>
           </motion.nav>
         )}
