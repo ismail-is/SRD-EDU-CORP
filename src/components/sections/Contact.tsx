@@ -26,7 +26,7 @@ export function Contact() {
       // Replace this URL with your actual Google Apps Script Web App URL!
       const GOOGLE_SCRIPT_URL ='https://script.google.com/macros/s/AKfycbxS9A76KxdtOCLoEycHcycsCdvCZTKiegQ3M1LmKZSd22787j9b9eSQ5RtxGF87WBIH/exec'
 
-      const response = await fetch(GOOGLE_SCRIPT_URL, {
+      await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
         body: formData,
         mode: 'no-cors' // Google Scripts requires no-cors for simple form posts without preflight headers
